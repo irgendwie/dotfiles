@@ -1,0 +1,25 @@
+## System
+alias up="yaourt -Syua && yaourt -C"
+# Network
+alias hogs="sudo nethogs"
+alias ip="curl -s icanhazip.com"
+
+## Transmission / Torrent
+alias t="(pidof transmission-daemon > /dev/null || transmission-daemon) && transmission-remote-cli"
+alias kT="killall transmission-daemon"
+
+## Music
+alias b3="mplayer http://streams.br.de/bayern3_2.m3u"
+alias chillstep="mplayer http://chillstep.info:1984/listen.mp3"
+
+## Video
+alias livestreamer="livestreamer --best-stream-default"
+# Streams
+alias ard="cvlc http://daserste_live-lh.akamaihd.net/i/daserste_de@91204/master.m3u8"
+alias zdf="cvlc http://zdf_hds_de-f.akamaihd.net/i/de14_v1@147090/master.m3u8"
+
+## Pictures
+alias sxiv="sxiv -a"
+
+## etc
+alias vpdf="zathura --fork"
