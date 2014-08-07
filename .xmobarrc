@@ -1,0 +1,20 @@
+Config {
+	bgColor = "#111111",
+	fgColor = "#CCCCCC",
+	position = Top,
+	commands = [
+		Run Cpu [
+			"-t", "cpu: <total>%"
+		] 10,
+		Run Memory [
+			"-t", "mem: <usedratio>%"
+		] 10,
+		Run Battery [
+			"-t", "bat: <left>%",
+			"--", "-p", "blue"
+		] 600,
+		Run Date "%a %d %b %y %H:%M" "date" 10,
+		Run StdinReader
+	],
+	template = "%StdinReader% }{ %cpu% | %memory% | %battery% | %date%"
+}
