@@ -1,7 +1,9 @@
 Config {
+	font = "xft:monospace:pixelsize=11"
 	bgColor = "#111111",
 	fgColor = "#CCCCCC",
 	position = Top,
+	lowerOnStart = True,
 	commands = [
 		Run Cpu [
 			"-t", "cpu: <total>%"
@@ -10,11 +12,10 @@ Config {
 			"-t", "mem: <usedratio>%"
 		] 10,
 		Run Battery [
-			"-t", "bat: <left>%",
-			"--", "-p", "blue"
+			"-t", "bat: <left>%"
 		] 600,
 		Run Date "%a %d %b %y %H:%M" "date" 10,
 		Run StdinReader
 	],
-	template = "%StdinReader% }{ %cpu% | %memory% | %battery% | %date%"
+	template = "%StdinReader% }{ %cpu% | %memory% | %battery% | %date% "
 }
