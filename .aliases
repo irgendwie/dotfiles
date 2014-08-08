@@ -2,7 +2,7 @@
 alias up="yaourt -Syua && yaourt -C"
 # Network
 alias hogs="sudo nethogs"
-alias ip="curl -s icanhazip.com"
+alias eip="curl -s icanhazip.com"
 
 ## Transmission / Torrent
 alias t="(pidof transmission-daemon > /dev/null || transmission-daemon) && transmission-remote-cli"

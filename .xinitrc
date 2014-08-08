@@ -12,10 +12,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-[[ -f ~/.xcolors/epiphany ]] && xrdb -merge ~/.xcolors/digerati
+[[ -f ~/.xcolors/digerati ]] && xrdb -merge ~/.xcolors/digerati
 
 ( /usr/bin/xcompmgr & )
 ( /usr/bin/xflux -l 48.139 -g 11.566 & )
+( sh ~/.fehbg & )
 
 # exec gnome-session
 # exec startkde
