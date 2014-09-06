@@ -1,7 +1,8 @@
 import XMonad
+import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks (avoidStruts)
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP)
 import System.IO (hPutStrLn)
 import XMonad.Hooks.ManageHelpers
@@ -20,7 +21,8 @@ main = do
 			ppCurrent = xmobarColor "#4A7781" ""
 		},
 		layoutHook = avoidStruts $ layoutHook defaultConfig,
-		manageHook = manageHook defaultConfig <+> composeAll myManageHook
+		manageHook = manageHook defaultConfig <+> composeAll myManageHook,
+		startupHook = setWMName "LG3D"
 	} `additionalKeysP` (myKeys homeDir)
 
 myKeys :: FilePath -> [(String, X())]
@@ -40,5 +42,9 @@ myManageHook = [
 	-- Applications
 	className =? "Vlc" --> doCenterFloat,
 	className =? "mpv" --> doCenterFloat,
-	-- Firefox stuff
-	title =? "Firefox-Einstellungen" --> doCenterFloat ]
+	-- Firefox / Thunderbird
+	title =? "Firefox-Einstellungen" --> doCenterFloat,
+	title =? "Thunderbird-Einstellungen" --> doCenterFloat,
+	className =? "Thunderbird" <&&> appName =? "Msgcompose" --> doCenterFloat,
+	className =? "Thunderbird" <&&> appName =? "Calendar" --> doCenterFloat,
+	className =? "Thunderbird" <&&> appName =? "Dialog" --> doCenterFloat ]
