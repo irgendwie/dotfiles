@@ -34,6 +34,7 @@ myKeys homeDir = [
 	-- etc.
 	("<XF86Launch1>", spawn "systemctl hibernate"),
 	("<XF86ScreenSaver>", spawn "slimlock"),
+	("<XF86Display>", spawn $ homeDir ++ ".extmo"),
 	("<Print>", spawn $ "scrot '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'") ]
 
 myManageHook :: [ManageHook]
@@ -42,9 +43,11 @@ myManageHook = [
 	-- Applications
 	className =? "Vlc" --> doCenterFloat,
 	className =? "mpv" --> doCenterFloat,
+	className =? "Zathura" <&&> title =? "Drucken" --> doCenterFloat,
 	-- Firefox / Thunderbird
-	title =? "Firefox-Einstellungen" --> doCenterFloat,
-	title =? "Thunderbird-Einstellungen" --> doCenterFloat,
+	className =? "Firefox" <&&> title =? "Firefox-Einstellungen" --> doCenterFloat,
+	className =? "Thunderbird" <&&> title =? "Thunderbird-Einstellungen" --> doCenterFloat,
+	-- Thunderbird calendar dialogs
 	className =? "Thunderbird" <&&> appName =? "Msgcompose" --> doCenterFloat,
 	className =? "Thunderbird" <&&> appName =? "Calendar" --> doCenterFloat,
 	className =? "Thunderbird" <&&> appName =? "Dialog" --> doCenterFloat ]
