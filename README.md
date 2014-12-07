@@ -8,15 +8,15 @@ I'm not going to explain the applications here,
 but rather how and why I configured them the way I did.
 
 Applications
-============
+------------
 
 ### canto
-*.canto\/\**
+*.canto/**
 ### livestreamer
 *.livestreamerrc*
 ### xmonad
-*.xmonad\/\**
+*.xmonad/**
 ### xmobar
-*.xmobarrc\/\*
+*.xmobarrc*
 ### zsh
-*.zshrc\/\*
+*.zshrc*
