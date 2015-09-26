@@ -14,6 +14,7 @@ main = do
 	homeDir <- getHomeDirectory
 	xmproc <- spawnPipe "xmobar"
 	xmonad $ ewmh defaultConfig {
+		handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook,
 		modMask = mod4Mask,
 		terminal = "urxvt",
 		workspaces = ["1'www", "2'new", "3'irc", "4'mus", "5'mov", "6'cod", "7'uni", "8'pir","9'mis"],
