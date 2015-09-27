@@ -3,7 +3,6 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.SetWMName
 import XMonad.Layout.Minimize
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -24,8 +23,7 @@ main = do
 			ppCurrent = xmobarColor "#4A7781" ""
 		},
 		layoutHook = avoidStruts $ minimize $ layoutHook defaultConfig,
-		manageHook = manageHook defaultConfig <+> composeAll myManageHook,
-		startupHook = setWMName "LG3D"
+		manageHook = manageHook defaultConfig <+> composeAll myManageHook
 	} `additionalKeysP` (myKeys homeDir)
 
 myKeys :: FilePath -> [(String, X())]
