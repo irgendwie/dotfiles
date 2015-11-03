@@ -4,6 +4,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Minimize
+import XMonad.Layout.Spiral
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP)
 import System.Directory (getHomeDirectory)
@@ -22,7 +23,7 @@ main = do
 			ppTitle = xmobarColor "#CCCCCC" "" . shorten 100,
 			ppCurrent = xmobarColor "#4A7781" ""
 		},
-		layoutHook = avoidStruts $ minimize $ layoutHook defaultConfig,
+		layoutHook = avoidStruts $ minimize $ spiral (0.675) ||| layoutHook defaultConfig,
 		manageHook = manageHook defaultConfig <+> composeAll myManageHook
 	} `additionalKeysP` (myKeys homeDir)
 
