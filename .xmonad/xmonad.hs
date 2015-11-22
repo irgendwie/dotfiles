@@ -42,7 +42,7 @@ myKeys homeDir = [
 	("M-m", withFocused minimizeWindow),
 	("M-S-m", sendMessage RestoreNextMinimizedWin),
 	-- dmenu
-	("M-p", spawn "dmenu_run -i")]
+	("M-p", spawn "dmenu_run -i -fn 'xft:monospace:pixelsize=11'")]
 
 myManageHook :: [ManageHook]
 myManageHook = [

@@ -1,5 +1,5 @@
 Config {
-	font = "xft:monospace:pixelsize=11"
+	font = "xft:monospace:pixelsize=11",
 	bgColor = "#111111",
 	fgColor = "#CCCCCC",
 	position = Top,
@@ -14,8 +14,11 @@ Config {
 		Run Battery [
 			"-t", "bat: <left>%"
 		] 600,
+		Run DynNetwork [
+			"-t", "<dev>: ↑<tx> ↓<rx>"
+		] 10,
 		Run Date "%a %d %b %y %H:%M" "date" 10,
 		Run StdinReader
 	],
-	template = "%StdinReader% }{ %cpu% | %memory% | %battery% | %date% "
+	template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %battery% | %date% "
 }
