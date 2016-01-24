@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Actions.CopyWindow
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
@@ -42,7 +43,8 @@ myKeys homeDir = [
 	("M-m", withFocused minimizeWindow),
 	("M-S-m", sendMessage RestoreNextMinimizedWin),
 	-- dmenu
-	("M-p", spawn "dmenu_run -i -fn 'xft:monospace:pixelsize=11'")]
+	("M-p", spawn "dmenu_run -i -fn 'xft:monospace:pixelsize=11'"),
+	("M-c", windows copyToAll)]
 
 myManageHook :: [ManageHook]
 myManageHook = [
