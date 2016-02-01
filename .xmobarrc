@@ -1,5 +1,6 @@
 Config {
-	font = "xft:monospace:pixelsize=11",
+	font = "xft:monospace:pixelsize=11:antialias=true,
+            Sazanami Mincho:pixelsize=11:antialias=true",
 	bgColor = "#111111",
 	fgColor = "#CCCCCC",
 	position = Top,
