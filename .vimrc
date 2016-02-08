@@ -1,12 +1,21 @@
+" syntax highlight
 syntax on
 
-set spelllang=en,de
-hi clear SpellBad
-hi clear SpellCap
-hi SpellBad cterm=underline,bold, ctermfg=red
-hi SpellCap cterm=underline,bold, ctermfg=blue
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 
-set list
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-
+" local stuff
+setlocal spell spelllang=en,de
 map <F2> :set spell!<CR>
+
+" color
+colorscheme industry
+
+" https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
+highlight OverLength ctermbg=blue ctermfg=white
+match OverLength /\%81v.\+/
