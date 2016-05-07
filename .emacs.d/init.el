@@ -6,3 +6,12 @@
 	  '(lambda()
 	     (setq indent-tabs-mode 't
 		   tab-width '4)))
+
+;; Markdown stuff
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\.md" . markdown-mode) auto-mode-alist))
+
+;; Theme
+(load-theme 'tango-dark)
