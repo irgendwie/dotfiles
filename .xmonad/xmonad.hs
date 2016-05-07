@@ -32,6 +32,7 @@ myKeys :: FilePath -> [(String, X())]
 myKeys homeDir = [
     -- Volume control
     ("<XF86AudioMute>", spawn "amixer sset 'Master' toggle -q"),
+    ("<XF86AudioMicMute>", spawn "amixer sset 'Capture' toggle -q"),
     ("<XF86AudioLowerVolume>", spawn "amixer sset 'Master' 3%- -q"),
     ("<XF86AudioRaiseVolume>", spawn "amixer sset 'Master' 3%+ -q"),
     -- etc.
