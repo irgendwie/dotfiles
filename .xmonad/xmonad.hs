@@ -37,7 +37,7 @@ myKeys homeDir = [
     ("<XF86AudioRaiseVolume>", spawn "amixer sset 'Master' 3%+ -q"),
     -- etc.
     ("<XF86Launch1>", spawn "systemctl hibernate"),
-    ("<XF86ScreenSaver>", spawn "physlock"),
+    ("<XF86ScreenSaver>", spawn "physlock -m"),
     ("<XF86Display>", spawn $ homeDir ++ "/.extmo.sh"),
     ("<Print>", spawn $ "scrot '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
     -- minimize
@@ -54,9 +54,9 @@ myManageHook = [
     -- Applications
     className =? "Vlc" --> doCenterFloat,
     className =? "mpv" --> doCenterFloat,
-    className =? "Zathura" <&&> title =? "Drucken" --> doCenterFloat,
+    className =? "Zathura" <&&> title =? "Print" --> doCenterFloat,
     -- Thunderbird
-    className =? "Thunderbird" <&&> title =? "Thunderbird-Einstellungen" --> doCenterFloat,
+    className =? "Thunderbird" <&&> title =? "Thunderbird Preferences" --> doCenterFloat,
     className =? "Thunderbird" <&&> appName =? "Msgcompose" --> doCenterFloat,
     className =? "Thunderbird" <&&> appName =? "Calendar" --> doCenterFloat,
     className =? "Thunderbird" <&&> appName =? "Dialog" --> doCenterFloat,
