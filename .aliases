@@ -1,47 +1,44 @@
-## System
-alias up="yaourt -Syua && yaourt -C && yaourt -Qdt"
+# System
+alias pacaur="command pacaur --color auto"
+alias up="pacaur -Syu"
+
 # Network
 alias ac="nmcli con show -a"
 alias hogs="sudo nethogs wlp6s0"
 alias eip="curl -s icanhazip.com"
 
-## Transmission / Torrent
+# Download
 alias t="(pidof transmission-daemon > /dev/null || transmission-daemon) && transmission-remote-cli"
 alias kT="killall transmission-daemon"
 alias jd="java -jar ~/Downloads/JDownloader/JDownloader.jar"
 
-## Music / Radio
+# Music/Radio
+## Streams
 alias b3="mpv http://streams.br.de/bayern3_2.m3u"
 alias energy="mpv http://95.81.147.25/8901/nrj_168713.mp3"
 alias m945="mpv http://stream.m945.de/m945-hq.ogg.m3u"
 alias chillstep="mpv http://chillstep.info:1984/listen.mp3"
 alias oberwiesenfeld="mpv http://81.169.168.66:8000/RadioOberwiesenfeld.m3u"
 
-## Video
+# Video
 alias livestreamer="livestreamer --default-stream best"
-# Streams
+twitch() {
+	livestreamer http://www.twitch.tv/$1
+}
+## Streams
 alias ard="mpv http://daserste_live-lh.akamaihd.net/i/daserste_de@91204/master.m3u8"
 alias zdf="mpv http://zdf1314-lh.akamaihd.net/i/de14_v1@392878/master.m3u8"
-alias t24="mpv http://tagesschau-lh.akamaihd.net/i/tagesschau_1@119231/master.m3u8"
+alias t24="mpv http://tagesschau-lh.akamaihd.net/z/tagesschau_1@119231/index_3712_av-p.m3u8"
 alias ndr="mpv http://ndr_fs-lh.akamaihd.net/i/ndrfs_nds@119224/master.m3u8"
 alias wdr="mpv http://wdr_fs_geo-lh.akamaihd.net/i/wdrfs_geogeblockt@112044/master.m3u8"
 
-## Pictures
-alias sxiv="sxiv -a"
+# Pictures
+alias sxiv="command sxiv -a"
 
-## etc
-alias vpdf="zathura --fork"
-
-## Testing
+# RSS
 alias canto="canto-curses"
 
-rfc() {
-  luakit -n https://tools.ietf.org/html/rfc$1
-}
-
-twitch() {
-  livestreamer http://www.twitch.tv/$1
-}
-
-alias bf="printf '\33]50;%s\007' \"xft:monospace:pixelsize=20\""
-alias nf="printf '\33]50;%s\007' \"xft:monospace:pixelsize=14\""
+# etc
+alias vpdf="zathura --fork"
+alias qr="qrencode -t UTF8"
+alias please="sudo"
