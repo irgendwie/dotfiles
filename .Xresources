@@ -1,5 +1,5 @@
 URxvt*scrollBar:false
 URxvt*depth:32
-URxvt*foreground:#CCCCCC
-URxvt*background:[85]#111111
-URxvt*font:xft:monospace:pixelsize=14
+URxvt*foreground:#F8F8F8
+URxvt*background:[95]#171717
+URxvt*font:xft:monospace:pixelsize=12
