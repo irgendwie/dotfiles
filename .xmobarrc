@@ -1,8 +1,8 @@
 Config {
 	font = "xft:monospace:pixelsize=11:antialias=true,
             Sazanami Mincho:pixelsize=11:antialias=true",
-	bgColor = "#111111",
-	fgColor = "#CCCCCC",
+	fgColor = "#F8F8F8",
+	bgColor = "#171717",
 	position = Top,
 	lowerOnStart = True,
 	commands = [
@@ -13,7 +13,7 @@ Config {
 			"-t", "mem: <usedratio>%"
 		] 10,
 		Run Battery [
-			"-t", "bat: <left>%"
+			"-t", "bat: <left>% (<timeleft>)"
 		] 600,
 		Run DynNetwork [
 			"-t", "<dev>: ↑<tx> ↓<rx>"
