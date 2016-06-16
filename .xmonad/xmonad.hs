@@ -39,7 +39,15 @@ myKeys homeDir = [
     ("<XF86Launch1>", spawn "systemctl hibernate"),
     ("<XF86ScreenSaver>", spawn "physlock -m"),
     ("<XF86Display>", spawn $ homeDir ++ "/.extmo.sh"),
+    {-
+        bind <print> to make a screenshot of the whole screen
+        bind C-<print> to interactively select a window or rectangle and make a screenshot
+
+        sleep 0.2 is a workaround for a bug in xmonad, see:
+        https://unix.stackexchange.com/questions/191973/how-to-create-custom-shortcuts-for-scrot-and-gnome-screenshot-interactive-mode/192757#192757
+    -}
     ("<Print>", spawn $ "scrot '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
+    ("C-<Print>", spawn $ "sleep 0.2; scrot -s '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
     -- minimize
     ("M-m", withFocused minimizeWindow),
     ("M-S-m", sendMessage RestoreNextMinimizedWin),
