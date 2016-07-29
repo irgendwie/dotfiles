@@ -11,7 +11,13 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-      (cons '("\.md" . markdown-mode) auto-mode-alist))
+      (cons '("\\.md\\'" . markdown-mode) auto-mode-alist))
+
+;; Haskell stuff
+(autoload 'haskell-mode "haskell-mode.el"
+  "Haskell mode for editing Haskell files" t)
+(setq auto-mode-alist
+      (cons '("\\.hs\\'" . haskell-mode) auto-mode-alist))
 
 ;; Theme
 (load-theme 'tango-dark)
