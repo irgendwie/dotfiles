@@ -21,3 +21,15 @@
 
 ;; Theme
 (load-theme 'tango-dark)
+
+;; MELPA
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(package-initialize)
+
+;; Backup
+(setq backup-directory-alist
+      `((".*" . "~/.saves")))
+(setq auto-save-file-name-transforms
+      `((".*" "~/.saves/" t)))
