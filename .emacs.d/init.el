@@ -22,6 +22,12 @@
 ;; Theme
 (load-theme 'tango-dark)
 
+;; ido wtf (thanks dk87)
+(ido-mode)
+
+;; alias
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; MELPA
 (require 'package)
 (add-to-list 'package-archives
