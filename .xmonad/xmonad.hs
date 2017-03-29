@@ -1,8 +1,10 @@
 import XMonad
+import XMonad.Layout.Fullscreen (fullscreenFull)
+import XMonad.Layout.NoBorders
 import XMonad.Actions.CopyWindow
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks, docksEventHook)
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Minimize
 import XMonad.Layout.Spiral
@@ -15,7 +17,7 @@ main = do
     homeDir <- getHomeDirectory
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmh defaultConfig {
-        handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook,
+        handleEventHook = mconcat [ docksEventHook, handleEventHook defaultConfig] <+> fullscreenEventHook,
         modMask = mod4Mask,
         terminal = "urxvt",
         workspaces = ["一", "二", "三", "四", "五", "六", "七", "八","九"],
@@ -24,8 +26,8 @@ main = do
             ppTitle = xmobarColor "#CCCCCC" "" . shorten 100,
             ppCurrent = xmobarColor "#4A7781" ""
         },
-        layoutHook = avoidStruts $ minimize $ spiral (0.675) ||| layoutHook defaultConfig,
-        manageHook = manageHook defaultConfig <+> composeAll myManageHook
+        layoutHook = avoidStruts $ minimize $ spiral (0.675) ||| noBorders (fullscreenFull Full) ||| layoutHook defaultConfig,
+        manageHook = manageDocks <+> manageHook defaultConfig <+> composeAll myManageHook
     } `additionalKeysP` (myKeys homeDir)
 
 myKeys :: FilePath -> [(String, X())]
@@ -46,8 +48,8 @@ myKeys homeDir = [
         sleep 0.2 is a workaround for a bug in xmonad, see:
         https://unix.stackexchange.com/questions/191973/how-to-create-custom-shortcuts-for-scrot-and-gnome-screenshot-interactive-mode/192757#192757
     -}
-    ("<Print>", spawn $ "scrot '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
-    ("C-<Print>", spawn $ "sleep 0.2; scrot -s '" ++ homeDir ++ "/Pictures/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
+    ("<Print>", spawn $ "scrot '" ++ homeDir ++ "/Photos/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
+    ("C-<Print>", spawn $ "sleep 0.2; scrot -s '" ++ homeDir ++ "/Photos/Screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'"),
     -- minimize
     ("M-m", withFocused minimizeWindow),
     ("M-S-m", sendMessage RestoreNextMinimizedWin),
@@ -63,6 +65,7 @@ myManageHook = [
     className =? "Vlc" --> doCenterFloat,
     className =? "mpv" --> doCenterFloat,
     className =? "Zathura" <&&> title =? "Print" --> doCenterFloat,
+    className =? "Worms WMD" --> doCenterFloat,
     -- Thunderbird
     className =? "Thunderbird" <&&> title =? "Thunderbird Preferences" --> doCenterFloat,
     className =? "Thunderbird" <&&> appName =? "Msgcompose" --> doCenterFloat,

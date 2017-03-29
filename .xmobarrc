@@ -1,10 +1,12 @@
 Config {
 	font = "xft:monospace:pixelsize=11:antialias=true,
-            Sazanami Mincho:pixelsize=11:antialias=true",
+            Sazanami Mincho:pixelsize=11:antialias=true,
+	    Baekmuk Gulim:pixelsize=11:antialias=true"
 	fgColor = "#F8F8F8",
 	bgColor = "#171717",
 	position = Top,
 	lowerOnStart = True,
+	overrideRedirect = False,
 	commands = [
 		Run Cpu [
 			"-t", "cpu: <total>%"
@@ -19,7 +21,8 @@ Config {
 			"-t", "<dev>: ↑<tx> ↓<rx>"
 		] 10,
 		Run Date "%a %d %b %y %H:%M" "date" 10,
-		Run StdinReader
+		Run StdinReader,
+		Run Kbd [("de(nodeadkeys)", "de"), ("de(neo)", "de(neo)")]
 	],
-	template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %battery% | %date% "
+	template = " %StdinReader% }{ %kbd% | %dynnetwork% | %cpu% | %memory% | %battery% | %date% "
 }
